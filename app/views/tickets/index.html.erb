@@ -1,29 +1,31 @@
-<p id="notice"><%= notice %></p>
+<div class="page-header">
+  <%= link_to new_ticket_path, :class => 'btn btn-primary' do %>
+    <span class="glyphicon glyphicon-plus"></span>
+    New Ticket
+  <% end %>
+  <h1>Listing tickets</h1>
+</div>
 
-<h1>Listing Tickets</h1>
-
-<table class="table table-striped">
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Body</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @tickets.each do |ticket| %>
+<div class="table-responsive">
+  <table class="table table-striped table-bordered table-hover">
+    <thead>
       <tr>
-        <td><%= ticket.title %></td>
-        <td><%= ticket.body %></td>
-        <td><%= link_to 'Show', ticket %></td>
+            <th>Title</th>
+            <th>Body</th>
+            <th></th>
+        <th></th>
+        <th></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <%= content_tag_for(:tr, @tickets) do |ticket| %>
+            <td><%= ticket.title %></td>
+            <td><%= ticket.body %></td>
+            <td><%= link_to 'Show', ticket %></td>
         <td><%= link_to 'Edit', edit_ticket_path(ticket) %></td>
         <td><%= link_to 'Destroy', ticket, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Ticket', new_ticket_path %>
+      <% end %>
+    </tbody>
+  </table>
+</div>
