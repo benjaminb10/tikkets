@@ -1,6 +1,8 @@
 //= require_self
 //= require_tree .
 
+$icon-font-path = 'lib/bootstrap/'
+
 @import 'nib'
 @import 'jeet'
 @import 'rupture'
@@ -10,15 +12,5 @@
 rupture.scale = 0 400px 600px 800px 1050px 1800px
 rupture.scale-names = 'xs' 's' 'm' 'l' 'xl' 'hd'
 
-.test-nib
-  border-radius 5px
-  border 1px solid #ddd
-  background linear-gradient(top, white, black)
-
-.one
-  span(1/3)
-  +below('m')
-    background red
-
-.two
-  span(1/3)
+table .date
+  white-space nowrap
