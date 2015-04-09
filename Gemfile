@@ -13,6 +13,8 @@ gem 'bootstrap-generators', '~> 3.3.1'
 gem 'rails_12factor', group: :production
 gem 'stylus'
 gem 'acts-as-taggable-on', '~> 3.4'
+gem 'devise'
+gem 'devise-bootstrap-views'
 
 group :development, :test do
   gem 'byebug'

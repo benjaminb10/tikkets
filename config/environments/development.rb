@@ -42,5 +42,7 @@ Rails.application.configure do
   # Rack::LiveReload options.
   config.middleware.use(Rack::LiveReload)
 
-  config.serve_static_assets = false
+  config.serve_static_files = false
+  # Devise
+  config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
 end
