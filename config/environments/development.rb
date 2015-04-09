@@ -41,4 +41,6 @@ Rails.application.configure do
 
   # Rack::LiveReload options.
   config.middleware.use(Rack::LiveReload)
+
+  config.serve_static_assets = false
 end

@@ -11,6 +11,7 @@
     <thead>
       <tr>
         <th>Sujet</th>
+        <th>Tags</th>
         <th>Date</th>
       </tr>
     </thead>
@@ -18,6 +19,11 @@
     <tbody>
       <%= content_tag_for(:tr, @tickets) do |ticket| %>
         <td><%= link_to ticket.title, ticket %></td>
+        <td>
+          <% ticket.tags.each do |tag| %>
+            <%= link_to tag, '#', class: "label label-#{tag}" %>
+          <% end %>
+        </td>
         <td class="date"><%= ticket.created_at.strftime("%d/%m/%y %H:%M") %></td>
       <% end %>
     </tbody>
