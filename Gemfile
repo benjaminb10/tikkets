@@ -17,6 +17,8 @@ group :development, :test do
   gem 'byebug'
   gem 'web-console', '~> 2.0'
   gem 'spring'
+  gem 'guard-livereload', require: false
+  gem "rack-livereload"
 end
 
 ruby "2.1.2"
