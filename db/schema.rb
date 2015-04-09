@@ -13,6 +13,9 @@
 
 ActiveRecord::Schema.define(version: 20150408205339) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "comments", force: :cascade do |t|
     t.integer  "ticket_id"
     t.text     "body"
@@ -20,7 +23,7 @@ ActiveRecord::Schema.define(version: 20150408205339) do
     t.datetime "updated_at", null: false
   end
 
-  add_index "comments", ["ticket_id"], name: "index_comments_on_ticket_id"
+  add_index "comments", ["ticket_id"], name: "index_comments_on_ticket_id", using: :btree
 
   create_table "tickets", force: :cascade do |t|
     t.string   "title"
@@ -29,4 +32,5 @@ ActiveRecord::Schema.define(version: 20150408205339) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "comments", "tickets"
 end
