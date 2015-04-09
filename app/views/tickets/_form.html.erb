@@ -2,7 +2,7 @@
   <% if @ticket.errors.any? %>
     <div class="alert alert-danger alert-dismissable" role="alert">
       <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-      <h4><%= pluralize(@ticket.errors.count, "error") %> prohibited this ticket from being saved:</h4>
+      <h4><%= pluralize(@ticket.errors.count, "erreur") %> s'est produite :</h4>
 
       <ul>
       <% @ticket.errors.full_messages.each do |msg| %>
@@ -13,13 +13,13 @@
   <% end %>
 
   <div class="form-group">
-    <%= f.label :title, :class => "col-sm-2 control-label" %>
+    <%= f.label :title, 'Sujet', :class => "col-sm-2 control-label" %>
     <div class="col-sm-10">
       <%= f.text_field :title, :class => "form-control" %>
     </div>
   </div>
   <div class="form-group">
-    <%= f.label :body, :class => "col-sm-2 control-label" %>
+    <%= f.label :body, 'Objet', :class => "col-sm-2 control-label" %>
     <div class="col-sm-10">
       <%= f.text_area :body, rows: "16", :class => "form-control" %>
     </div>
