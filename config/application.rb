@@ -22,5 +22,10 @@ module Tickets
 
     # Do not swallow errors in after_commit/after_rollback callbacks.
     config.active_record.raise_in_transactional_callbacks = true
+
+    if defined? Stylus                        
+      Stylus.use(:nib, :jeet, :rupture)                        
+      Stylus.debug = Rails.env != "production"
+    end
   end
 end
