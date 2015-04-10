@@ -7,29 +7,26 @@
 </div>
 
 <div class="table-responsive">
-  <table class="table table-striped table-bordered table-hover">
+  <table class="table">
     <thead>
       <tr>
-        <th>Tags</th>
         <th>Sujet</th>
-        <th>Par</th>
-        <th>Date</th>
+        <th>Dernière réponse</th>
+        <th>Mise à jour</th>
       </tr>
     </thead>
-
     <tbody>
       <%= content_tag_for(:tr, @tickets) do |ticket| %>
         <td>
+          <div class="badge pull-right"><%= ticket.comments.count %></div>
+          <%= link_to truncate(ticket.title, length: 150), ticket %>
+          <br/>
           <% ticket.tags.each do |tag| %>
             <%= link_to tag, '#', class: "label label-default label-#{tag}" %>
           <% end %>
         </td>
-        <td>
-          <%= link_to truncate(ticket.title, length: 100), ticket %>
-          <div class="badge pull-right"><%= ticket.comments.count %></div>
-        </td>
-        <td><%= ticket.user.email %></td>
-        <td class="date"><%= ticket.created_at.localtime.strftime("%d/%m/%y %H:%M") %></td>
+        <td><%= ticket.last_user.email %></td>
+        <td class="date"><%= ticket.last_update %></td>
       <% end %>
     </tbody>
   </table>
