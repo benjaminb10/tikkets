@@ -26,7 +26,7 @@ module Tickets
     config.assets.initialize_on_precompile = false
 
     if defined? Stylus                        
-      Stylus.use(:nib, :jeet, :rupture)                        
+      Stylus.use(:nib, "lost-grid", :rupture)                        
       Stylus.debug = Rails.env != "production"
     end
   end
