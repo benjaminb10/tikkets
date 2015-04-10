@@ -15,6 +15,7 @@ gem 'stylus'
 gem 'acts-as-taggable-on', '~> 3.4'
 gem 'devise'
 gem 'devise-bootstrap-views'
+gem 'cancancan', '~> 1.10'
 
 group :development, :test do
   gem 'byebug'

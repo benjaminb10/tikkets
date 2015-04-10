@@ -3,9 +3,11 @@
     <span class="glyphicon glyphicon-list-alt"></span>
     Retour
   <% end %>
-  <%= link_to edit_ticket_path(@ticket), :class => 'btn btn-primary' do %>
-    <span class="glyphicon glyphicon-pencil"></span>
-    Editer
+  <% if can? :update, @ticket %>
+    <%= link_to edit_ticket_path(@ticket), :class => 'btn btn-primary' do %>
+      <span class="glyphicon glyphicon-pencil"></span>
+      Editer
+    <% end %>
   <% end %>
 
   <h4><%= @ticket.title %></h4>
