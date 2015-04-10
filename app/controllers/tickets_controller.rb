@@ -7,7 +7,7 @@ class TicketsController < ApplicationController
   # GET /tickets
   # GET /tickets.json
   def index
-    @tickets = Ticket.all
+    @tickets = Ticket.all.sort {|a,b| b.last_update <=> a.last_update}
   end
 
   # GET /tickets/1

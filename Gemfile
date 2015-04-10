@@ -16,6 +16,7 @@ gem 'acts-as-taggable-on', '~> 3.4'
 gem 'devise'
 gem 'devise-bootstrap-views'
 gem 'cancancan', '~> 1.10'
+gem 'rails_autolink'
 
 group :development, :test do
   gem 'byebug'
