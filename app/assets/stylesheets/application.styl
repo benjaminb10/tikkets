@@ -8,6 +8,12 @@
 
 // edit(grey)
 
+focus()
+  animation focus-fade 5s forwards
+  @keyframes focus-fade
+    0%
+      background #fcf8e3
+
 rupture.scale = 0 400px 600px 800px 1050px 1800px
 rupture.scale-names = 'xs' 's' 'm' 'l' 'xl' 'hd'
 
@@ -32,9 +38,5 @@ table .date
 .label-fonctionnalite
   background-color #5cb85c
   
-.well-fade
-  background-color #fcf8e3
-  animation well-fade 7s forwards
-  @keyframes well-fade
-    100%
-      background #f5f5f5
+.focus, table tbody tr:first-child
+  focus()

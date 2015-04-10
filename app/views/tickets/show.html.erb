@@ -18,10 +18,11 @@
   <%= link_to tag, '#', class: "label label-default label-#{tag}" %>
 <% end %>
 <br/>
+<small><em><%= @ticket.user.email %> - <%= @ticket.created_at.localtime.strftime("%d/%m/%y %H:%M") %></em></small>
 
 <br/><br/>
 
-<% if @ticket.body %>
+<% if not @ticket.body.blank? %>
   <div class="well">
     <%= auto_link(@ticket.body) %>
     <br/>
@@ -36,8 +37,8 @@
 <div class="row">
   <div class="col-sm-10">
     <% @ticket.comments.each do |comment| %>
-      <div class="well <%= 'well-fade' if comment == @ticket.comments.last %>">
-        <%= auto_link(comment.body) %>
+      <div class="well <%= 'focus' if comment == @ticket.comments.last %>">
+        <%= auto_link(h(comment.body)) %>
         <br/>
         <div class="text-right">
           <small><em><%= comment.user.email %> - <%= comment.created_at.localtime.strftime("%d/%m/%y %H:%M") %></em></small>
