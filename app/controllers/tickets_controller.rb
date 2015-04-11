@@ -7,7 +7,7 @@ class TicketsController < ApplicationController
   # GET /tickets
   # GET /tickets.json
   def index
-    @tickets = Ticket.all.sort {|a,b| b.last_update <=> a.last_update}
+    @tickets = Ticket.all.sort {|a,b| a.last_update <=> b.last_update}
   end
 
   # GET /tickets/1
@@ -73,6 +73,6 @@ class TicketsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def ticket_params
-      params.require(:ticket).permit(:title, :body, :tag_list, :user_id)
+      params.require(:ticket).permit(:title, :body, :closed, :tag_list, :user_id)
     end
 end

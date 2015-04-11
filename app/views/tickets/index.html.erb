@@ -3,11 +3,11 @@
     <span class="glyphicon glyphicon-plus"></span>
     Nouveau ticket
   <% end %>
-  <h1>Liste des tickets</h1>
+  <h2>Liste des tickets</h2>
 </div>
 
 <div class="table-responsive">
-  <table class="table">
+  <table class="table opened-tickets">
     <thead>
       <tr>
         <th>Sujet</th>
@@ -16,17 +16,19 @@
       </tr>
     </thead>
     <tbody>
-      <%= content_tag_for(:tr, @tickets) do |ticket| %>
-        <td>
-          <div class="badge pull-right"><%= ticket.comments.count %></div>
-          <%= link_to truncate(ticket.title, length: 150), ticket %>
-          <br/>
-          <% ticket.tags.each do |tag| %>
-            <%= link_to tag, '#', class: "label label-default label-#{tag}" %>
-          <% end %>
-        </td>
-        <td><%= ticket.last_user.email %></td>
-        <td class="date"><%= ticket.last_update %></td>
+      <% @tickets.each do |ticket| %>
+        <tr class="<%= 'well' if ticket.closed? %>">
+          <td>
+            <div class="badge pull-right"><%= ticket.comments.count %></div>
+            <%= link_to truncate(ticket.title, length: 150), ticket %>
+            <br/>
+            <% ticket.tags.each do |tag| %>
+              <%= link_to tag, '#', class: "label label-default label-#{tag}" %>
+            <% end %>
+          </td>
+          <td><%= ticket.last_user.email %></td>
+          <td class="date"><%= ticket.last_update %></td>
+        </tr>
       <% end %>
     </tbody>
   </table>
