@@ -21,4 +21,8 @@ class Ticket < ActiveRecord::Base
     end
     last_user
   end
+
+  def to_param
+    "#{id}-#{title}".parameterize
+  end
 end
