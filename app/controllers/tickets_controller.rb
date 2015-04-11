@@ -8,6 +8,8 @@ class TicketsController < ApplicationController
   # GET /tickets.json
   def index
     @tickets = Ticket.all.sort {|a,b| a.last_update <=> b.last_update}
+    @opened_tickets = @tickets.select { |ticket| ticket.closed == false }
+    @closed_tickets = @tickets.select { |ticket| ticket.closed == true }
   end
 
   # GET /tickets/1

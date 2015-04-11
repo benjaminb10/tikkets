@@ -6,7 +6,13 @@
 @import 'lost'
 @import 'rupture'
 
+rupture.scale = 0 400px 600px 800px 1050px 1800px
+rupture.scale-names = 'xs' 's' 'm' 'l' 'xl' 'hd'
+
 // edit(grey)
+
+.edit
+  edit(red)
 
 focus()
   animation focus-fade 5s forwards
@@ -14,8 +20,13 @@ focus()
     0%
       background #fcf8e3
 
-rupture.scale = 0 400px 600px 800px 1050px 1800px
-rupture.scale-names = 'xs' 's' 'm' 'l' 'xl' 'hd'
+
+.focus-bar
+  margin-top 20px
+  background-color #F5F5F5
+  border-top 1px solid #E5E5E5
+  padding 20px
+  text-align center
 
 table .date
   white-space nowrap
