@@ -17,6 +17,7 @@ gem 'devise'
 gem 'devise-bootstrap-views'
 gem 'cancancan', '~> 1.10'
 gem 'rails_autolink'
+gem 'public_activity'
 
 group :development, :test do
   gem 'byebug'

@@ -21,7 +21,7 @@
           <tr>
             <td>
               <div class="badge pull-right"><%= ticket.comments.count %></div>
-              <%= link_to truncate(ticket.title, length: 150), ticket %>
+              <%= link_to "##{ticket.id}: #{truncate(ticket.title, length: 100)}", ticket %>
               <br/>
               <% ticket.tags.each do |tag| %>
                 <%= link_to tag, '#', class: "label label-default label-#{tag}" %>
@@ -51,7 +51,9 @@
       <h4>Tickets fermés</h4>
       <ul>
         <% @closed_tickets.each do |ticket| %>
-          <li><%= link_to truncate(ticket.title, length: 40), ticket %></li>
+          <li>
+            <%= link_to "##{ticket.id}: #{truncate(ticket.title, length: 40)}", ticket %>
+          </li>
         <% end %>
       </ul>
     </div>
