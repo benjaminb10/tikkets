@@ -1,1 +1,4 @@
-a répondu au ticket <%= link_to "##{activity.trackable.ticket.id}: #{activity.trackable.ticket.title}", activity.trackable.ticket %>
+a répondu au ticket <%= link_to activity.trackable.ticket.long_title, activity.trackable.ticket %>
+<div class="h1 text-muted">
+  <%= fa_icon "comment" %>
+</div>

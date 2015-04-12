@@ -1,1 +1,4 @@
-a mise à jour le ticket <%= link_to "##{activity.trackable.id}: #{activity.trackable.title}", activity.trackable %>
+a mise à jour le ticket <%= link_to activity.trackable.long_title, activity.trackable %>
+<div class="h1 text-muted">
+  <%= fa_icon "pencil" %>
+</div>

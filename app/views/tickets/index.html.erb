@@ -1,39 +1,36 @@
-<div class="page-header">
-  <%= link_to new_ticket_path, :class => 'btn btn-primary' do %>
+<div class="text-right">
+  <%= link_to new_ticket_path, :class => 'btn btn-success' do %>
     <span class="glyphicon glyphicon-plus"></span>
     Nouveau ticket
   <% end %>
-  <h2>Liste des tickets</h2>
 </div>
 
+<br/>
+
 <% if @opened_tickets.any? %>
-  <div class="table-responsive">
-    <table class="table opened-tickets">
-      <thead>
-        <tr>
-          <th>Sujet</th>
-          <th>Dernière réponse</th>
-          <th>Mise à jour</th>
-        </tr>
-      </thead>
-      <tbody>
-        <% @opened_tickets.each do |ticket| %>
-          <tr>
-            <td>
-              <div class="badge pull-right"><%= ticket.comments.count %></div>
-              <%= link_to "##{ticket.id}: #{truncate(ticket.title, length: 100)}", ticket %>
-              <br/>
-              <% ticket.tags.each do |tag| %>
-                <%= link_to tag, '#', class: "label label-default label-#{tag}" %>
-              <% end %>
-            </td>
-            <td><%= ticket.last_user.email %></td>
-            <td class="date"><%= ticket.last_update %></td>
-          </tr>
-        <% end %>
-      </tbody>
-    </table>
+  <div class="opened-tickets">
+    <div class="container-fluid">
+      <% @opened_tickets.each do |ticket| %>
+        <div class="row">
+          <div class="col-xs-10">
+            <h3><%= link_to "#{truncate(ticket.long_title, length: 90)}", ticket %></h3>
+
+            <% ticket.tags.each do |tag| %>
+              <%= link_to tag, '#', class: "label label-default label-#{tag}" %>
+            <% end %>
+            <br/><br/>
+          </div>
+          <div class="col-xs-2"> 
+            <div class="infos text-right">
+              <small><%= ticket.last_update %></small><br/>
+              <small><%= link_to "Réponses (#{ticket.comments.count})", ticket %></small>
+            </div>
+          </div>    
+        </div>
+      <% end %>
+    </div>
   </div>
+
 <% else %>
   <div class="focus-bar">
     <h4>Il n'y a pas de ticket ouvert.</h4>

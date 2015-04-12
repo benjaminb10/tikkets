@@ -28,4 +28,8 @@ class Ticket < ActiveRecord::Base
   def to_param
     "#{id}-#{title}".parameterize
   end
+
+  def long_title
+    "##{id}: #{title}"
+  end
 end

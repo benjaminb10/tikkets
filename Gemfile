@@ -18,6 +18,7 @@ gem 'devise-bootstrap-views'
 gem 'cancancan', '~> 1.10'
 gem 'rails_autolink'
 gem 'public_activity'
+gem "font-awesome-rails"
 
 group :development, :test do
   gem 'byebug'

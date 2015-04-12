@@ -1,49 +1,45 @@
-<div class="page-header">
-  <%= link_to tickets_path, :class => 'btn btn-default' do %>
-    <span class="glyphicon glyphicon-list-alt"></span>
-    Retour
-  <% end %>
+<div class="text-right">
   <% if can? :update, @ticket %>
     <%= link_to edit_ticket_path(@ticket), :class => 'btn btn-primary' do %>
       <span class="glyphicon glyphicon-pencil"></span>
       Editer
     <% end %>
   <% end %>
-
-  <h4><%= @ticket.title %></h4>
 </div>
 
-
-<% @ticket.tags.each do |tag| %>
-  <%= link_to tag, '#', class: "label label-default label-#{tag}" %>
-<% end %>
-<br/>
-<small><em><%= @ticket.user.email %> - <%= @ticket.created_at.localtime.strftime("%d/%m/%y %H:%M") %></em></small>
+<h3><%= @ticket.long_title %></h3>
 
 <br/><br/>
 
 <% if not @ticket.body.blank? %>
-  <div class="well">
+  <div class="big">
     <%= auto_link(@ticket.body) %>
     <br/>
-    <div class="text-right">
-      <small><em><%= @ticket.user.email %> - <%= @ticket.created_at.localtime.strftime("%d/%m/%y %H:%M") %></em></small>
-    </div>
   </div>
 <% end %>
 
+<div class="text-right infos">
+  <% @ticket.tags.each do |tag| %> <%= link_to tag, '#', class: "label label-default label-#{tag}" %><% end %><br/>
+  <small><em><%= @ticket.created_at.localtime.strftime("%d/%m/%y %H:%M") %></em></small><br/>
+  <small><em><%= @ticket.user.email %></em></small>
+</div>
+
 <br/>
 
+<h3>Réponses <small>(<%= @ticket.comments.count %>)</small></h3>
+
 <div class="row">
-  <div class="col-sm-10">
+  <div class="col-sm-11">
     <% @ticket.comments.each do |comment| %>
-      <div class="well <%= 'focus' if comment == @ticket.comments.last %>">
+      <div class="ticket-comment <%= 'focus' if comment == @ticket.comments.last %>">
         <%= auto_link(h(comment.body)) %>
-        <br/>
-        <div class="text-right">
-          <small><em><%= comment.user.email %> - <%= comment.created_at.localtime.strftime("%d/%m/%y %H:%M") %></em></small>
+        <br/><br/>
+        <div class="text-right infos">
+          <small><em><%= comment.created_at.localtime.strftime("%d/%m/%y %H:%M") %></em></small><br/>
+          <small><em><%= comment.user.email %></em></small>
         </div>
       </div>
+      <hr/>
     <% end %>
   </div>
 </div>

@@ -3,13 +3,16 @@
 </div>
 
 <% @activities.each do |activity| %>
-  <div class="well">  
+  <h5>  
     <% if activity.owner %>
       <%= link_to activity.owner.email, activity.owner %>
     <% end %>
     <%= render_activity activity %>
-    <div class="text-right">
+    <div class="text-right infos">
       <small><%= activity.created_at.localtime.strftime("%d/%m/%y %H:%M") %></small>
     </div>
-  </div>
+  </h5>
+  <br/>
+  <hr/>
+  <br/><br/>
 <% end %>
