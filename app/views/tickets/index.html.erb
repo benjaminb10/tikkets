@@ -10,8 +10,8 @@
 <% if @opened_tickets.any? %>
   <div class="opened-tickets">
     <div class="container-fluid">
-      <% @opened_tickets.each do |ticket| %>
-        <div class="row">
+      <% @opened_tickets.each_with_index do |ticket, index| %>
+        <div class="row <%= 'focus' if index == 0 %>">
           <div class="col-xs-10">
             <h3><%= link_to "#{truncate(ticket.long_title, length: 90)}", ticket %></h3>
 
@@ -32,9 +32,9 @@
   </div>
 
 <% else %>
-  <div class="focus-bar">
-    <h4>Il n'y a pas de ticket ouvert.</h4>
-    <%= link_to new_ticket_path, :class => 'btn btn-primary' do %>
+  <div class="text-center">
+    <h1>Il n'y a pas de ticket ouvert.</h1>
+    <%= link_to new_ticket_path, :class => 'btn btn-lg btn-link' do %>
       <span class="glyphicon glyphicon-plus"></span>
       Nouveau ticket
     <% end %>

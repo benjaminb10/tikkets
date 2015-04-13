@@ -8,10 +8,10 @@
       <%= link_to activity.owner.email, activity.owner %>
     <% end %>
     <%= render_activity activity %>
-    <div class="text-right infos">
-      <small><%= activity.created_at.localtime.strftime("%d/%m/%y %H:%M") %></small>
-    </div>
   </h5>
+  <div class="text-right infos">
+    <small><%= activity.created_at.localtime.strftime("%d/%m/%y %H:%M") %></small>
+  </div>
   <br/>
   <hr/>
   <br/><br/>

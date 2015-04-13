@@ -12,12 +12,14 @@
     </div>
   <% end %>
 
-  <div class="form-group">
-    <%= f.label :closed, 'Ticket fermé', :class => "col-sm-2 control-label" %>
-    <div class="col-sm-10">
-      <%= f.check_box :closed, :class => "form-control" %>
+  <% if current_user.admin? %>
+    <div class="form-group">
+      <%= f.label :closed, 'Ticket fermé', :class => "col-sm-2 control-label" %>
+      <div class="col-sm-10">
+        <%= f.check_box :closed, :class => "form-control" %>
+      </div>
     </div>
-  </div>
+  <% end %>
   <div class="form-group">
     <%= f.label :title, 'Sujet', :class => "col-sm-2 control-label" %>
     <div class="col-sm-10">

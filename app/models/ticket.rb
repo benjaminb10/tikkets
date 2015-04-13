@@ -17,14 +17,6 @@ class Ticket < ActiveRecord::Base
     last_update.localtime.strftime("%d/%m/%y %H:%M")
   end
 
-  def last_user
-    last_user = user
-    if comments.last
-      last_user = comments.last.user
-    end
-    last_user
-  end
-
   def to_param
     "#{id}-#{title}".parameterize
   end
