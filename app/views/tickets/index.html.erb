@@ -23,7 +23,7 @@
       <% @opened_tickets.each_with_index do |ticket, index| %>
         <div class="row <%= 'focus' if index == 0 %>">
           <div class="col-xs-10">
-            <h3><%= link_to "#{truncate(ticket.long_title, length: 90)}", ticket %></h3>
+            <h3><%= link_to ticket.long_title, ticket %></h3>
 
             <% ticket.tags.each do |tag| %>
               <%= link_to tag, '#', class: "label label-default label-#{tag}" %>
