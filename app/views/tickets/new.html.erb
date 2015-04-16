@@ -7,3 +7,22 @@
 </div>
 
 <%= render 'form' %>
+
+<%= content_for :sidebar do %>
+  <br/><br/>
+  <div class="alert alert-danger">
+    <h4>Instructions</h4>
+    <p>
+      Merci de prendre le temps de :
+      <ul>
+        <li>choisir un titre clair</li>
+        <li>noter l'url</li>
+        <li>expliquer en détail la démarche pour reproduire</li>
+      </ul>
+    </p>
+  </div>
+  <div class="alert alert-success">
+    <h4>Remarque</h4>
+    <p>Vous pouvez nous appeler à tout moment</p>
+  </div>
+<% end %>
