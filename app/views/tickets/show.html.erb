@@ -16,7 +16,7 @@
 
 <% if not @ticket.body.blank? %>
   <div class="big">
-    <%= auto_link(@ticket.body) %>
+    <%= auto_link(simple_format(h(@ticket.body))) %>
     <br/>
   </div>
 <% end %>
@@ -35,7 +35,7 @@
   <div class="col-sm-11">
     <% @ticket.comments.each do |comment| %>
       <div class="ticket-comment <%= 'focus' if comment == @ticket.comments.last %>">
-        <%= auto_link(h(comment.body)) %>
+        <%= auto_link(simple_format(h(comment.body))) %>
         <br/><br/>
         <div class="text-right infos">
           <small><em>il y a <%= time_ago_in_words(comment.created_at.localtime) %></em></small><br/>
