@@ -1,3 +1,13 @@
+<div class="page-header">
+  <h2>
+    <% if current_page?(tickets_path) %>
+      Tous les tickets
+    <% else %>
+      Mes tickets
+    <% end %>
+  </h2>
+</div>
+
 <div class="text-right">
   <%= link_to new_ticket_path, :class => 'btn btn-success' do %>
     <span class="glyphicon glyphicon-plus"></span>

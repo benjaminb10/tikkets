@@ -8,7 +8,7 @@
 </div>
 
 <h3><%= @ticket.long_title %></h3>
-<% if @ticket.url %>
+<% if not @ticket.url.blank? %>
   <h5>Url : <%= auto_link(@ticket.url) %></h5>
 <% end %>
 
