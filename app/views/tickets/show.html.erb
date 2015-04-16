@@ -8,6 +8,9 @@
 </div>
 
 <h3><%= @ticket.long_title %></h3>
+<% if @ticket.url %>
+  <h5>Url : <%= auto_link(@ticket.url) %></h5>
+<% end %>
 
 <br/><br/>
 
