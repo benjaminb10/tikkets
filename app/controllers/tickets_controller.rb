@@ -7,7 +7,12 @@ class TicketsController < ApplicationController
   # GET /tickets
   # GET /tickets.json
   def index
-    @tickets = Ticket.all.sort {|a,b| a.last_update <=> b.last_update}
+    if params[:user_id]
+      @user = User.find(params[:user_id])
+      @tickets = @user.tickets.sort {|a,b| a.last_update <=> b.last_update}
+    else
+      @tickets = Ticket.all.sort {|a,b| a.last_update <=> b.last_update}
+    end
     @opened_tickets = @tickets.select { |ticket| ticket.closed == false }
     @closed_tickets = @tickets.select { |ticket| ticket.closed == true }
   end

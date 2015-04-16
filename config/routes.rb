@@ -4,7 +4,10 @@ Rails.application.routes.draw do
   root 'tickets#index'
 
   devise_for :users
-  resources :users
+  resources :users do
+    resources :tickets
+  end
+  
   resources :tickets do
     resources :comments
   end
