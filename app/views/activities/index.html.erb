@@ -10,7 +10,7 @@
     <%= render_activity activity %>
   </h5>
   <div class="text-right infos">
-    <small><%= activity.created_at.localtime.strftime("%d/%m/%y %H:%M") %></small>
+    <small>il y a <%= time_ago_in_words(activity.created_at.localtime) %></small>
   </div>
   <br/>
   <hr/>

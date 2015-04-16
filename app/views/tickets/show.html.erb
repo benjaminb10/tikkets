@@ -23,7 +23,7 @@
 
 <div class="text-right infos">
   <% @ticket.tags.each do |tag| %> <%= link_to tag, '#', class: "label label-default label-#{tag}" %><% end %><br/>
-  <small><em><%= @ticket.created_at.localtime.strftime("%d/%m/%y %H:%M") %></em></small><br/>
+  <small><em>il y a <%= time_ago_in_words(@ticket.created_at.localtime) %></em></small><br/>
   <small><em><%= @ticket.user.email %></em></small>
 </div>
 

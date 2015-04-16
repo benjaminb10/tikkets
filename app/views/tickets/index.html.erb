@@ -22,7 +22,7 @@
           </div>
           <div class="col-xs-2"> 
             <div class="infos text-right">
-              <small><%= ticket.last_update %></small><br/>
+              <small>il y a <%= time_ago_in_words(ticket.last_update.localtime) %></small><br/>
               <small><%= link_to "Réponses (#{ticket.comments.count})", ticket %></small>
             </div>
           </div>    

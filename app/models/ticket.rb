@@ -14,7 +14,7 @@ class Ticket < ActiveRecord::Base
     if comments.last and updated_at < comments.last.updated_at
       last_update = comments.last.updated_at 
     end
-    last_update.localtime.strftime("%d/%m/%y %H:%M")
+    last_update
   end
 
   def to_param
