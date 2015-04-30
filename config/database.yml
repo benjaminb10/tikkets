@@ -2,7 +2,7 @@ development:
   adapter: postgresql
   encoding: unicode
   host: localhost
-  database: my_database
+  database: tikkets_local
   pool: 5
   username: benjaminbenoudis
   password: jetaime

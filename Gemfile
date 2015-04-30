@@ -20,6 +20,7 @@ gem 'cancancan', '~> 1.10'
 gem 'rails_autolink'
 gem 'public_activity'
 gem "font-awesome-rails"
+gem 'activeadmin', github: 'activeadmin'
 
 group :development, :test do
   gem 'byebug'
