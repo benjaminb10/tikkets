@@ -1,9 +1,9 @@
-ActiveAdmin.register Ticket do
+ActiveAdmin.register Comment, as: "TicketComment" do
 
 # See permitted parameters documentation:
 # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
 #
-permit_params :title, :url, :body, :closed
+permit_params :body
 #
 # or
 #
