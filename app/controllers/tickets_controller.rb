@@ -2,16 +2,20 @@ class TicketsController < ApplicationController
   load_and_authorize_resource
   
   before_action :set_ticket, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_user!, except: [:show, :index]
+  before_action :authenticate_user!, except: [:index]
 
   # GET /tickets
   # GET /tickets.json
   def index
-    if params[:user_id]
+    if current_user.nil?
+      redirect_to pages_index_url
+    elsif current_user.admin?
+      @tickets = Ticket.all.sort {|a,b| a.last_update <=> b.last_update}
+    elsif current_user.id.to_s == params[:user_id].to_s
       @user = User.find(params[:user_id])
       @tickets = @user.tickets.sort {|a,b| a.last_update <=> b.last_update}
-    else
-      @tickets = Ticket.all.sort {|a,b| a.last_update <=> b.last_update}
+    elsif
+      redirect_to user_tickets_path(current_user.id)
     end
     @opened_tickets = @tickets.select { |ticket| ticket.closed == false }
     @closed_tickets = @tickets.select { |ticket| ticket.closed == true }
@@ -39,7 +43,7 @@ class TicketsController < ApplicationController
 
     respond_to do |format|
       if @ticket.save
-        format.html { redirect_to @ticket, notice: 'Le ticket a bien été créé.' }
+        format.html { redirect_to tickets_url, notice: 'Le ticket a bien été créé.' }
         format.json { render :show, status: :created, location: @ticket }
       else
         format.html { render :new }

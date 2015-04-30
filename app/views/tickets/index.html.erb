@@ -1,9 +1,9 @@
 <div class="page-header">
   <h2>
     <% if current_page?(tickets_path) %>
-      Tous les tickets
+      Tous les tickets ouverts <small>(<%= @tickets.count %>)</small>
     <% else %>
-      Mes tickets
+      Mes tickets ouverts <small>(<%= @opened_tickets.count %>)</small>
     <% end %>
   </h2>
 </div>
@@ -24,9 +24,10 @@
         <div class="row <%= 'focus' if index == 0 %>">
           <div class="col-xs-10">
             <h3><%= link_to ticket.long_title, ticket %></h3>
-
-            <% ticket.tags.each do |tag| %>
-              <%= link_to tag, '#', class: "label label-default label-#{tag}" %>
+            <% if can? :read, ticket.tags %>
+              <% ticket.tags.each do |tag| %>
+                <%= link_to tag, '#', class: "label label-default label-#{tag}" %>
+              <% end %>
             <% end %>
             <br/><br/>
           </div>
@@ -42,8 +43,8 @@
   </div>
 
 <% else %>
-  <div class="text-center">
-    <h1>Il n'y a pas de ticket ouvert.</h1>
+  <div class="alert alert-info text-center">
+    <h3>Il n'y a pas de ticket ouvert.</h3>
     <%= link_to new_ticket_path, :class => 'btn btn-lg btn-link' do %>
       <span class="glyphicon glyphicon-plus"></span>
       Nouveau ticket
@@ -55,7 +56,7 @@
   <%= content_for :sidebar do %>
     <br/><br/>
     <div class="well">
-      <h4>Tickets fermés</h4>
+      <h4>Tickets fermés <small>(<%= @closed_tickets.count %>)</small></h4>
       <ul>
         <% @closed_tickets.each do |ticket| %>
           <li>

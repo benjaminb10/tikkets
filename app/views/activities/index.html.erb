@@ -2,17 +2,19 @@
   <h2>Timeline</h2>
 </div>
 
-<% @activities.each do |activity| %>
-  <h5>  
-    <% if activity.owner %>
-      <%= link_to activity.owner.email, activity.owner %>
-    <% end %>
-    <%= render_activity activity %>
-  </h5>
-  <div class="text-right infos">
-    <small>il y a <%= time_ago_in_words(activity.created_at.localtime) %></small>
-  </div>
-  <br/>
-  <hr/>
-  <br/><br/>
-<% end %>
+<div id="activities" data-url="<%= activities_url format: :js %>">
+  <% @activities.each do |activity| %>
+    <h5>  
+      <% if activity.owner %>
+        <%= link_to activity.owner.email, activity.owner %>
+      <% end %>
+      <%= render_activity activity %>
+    </h5>
+    <div class="text-right infos">
+      <small>il y a <%= time_ago_in_words(activity.created_at.localtime) %></small>
+    </div>
+    <br/>
+    <hr/>
+    <br/><br/>
+  <% end %>
+</div>

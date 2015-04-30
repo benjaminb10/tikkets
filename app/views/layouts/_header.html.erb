@@ -12,13 +12,15 @@
     <div id="navbar" class="collapse navbar-collapse">
       <p class="navbar-text"></p>
       <ul class="nav navbar-nav">
-        <% if current_user.present? %>
+        <% if current_user %>
           <li class="<%= 'active' if current_page?(root_path) or current_page?(user_tickets_path(current_user))%>">
             <%= link_to 'mes tickets', user_tickets_path(current_user) %>
           </li>
         <% end %>
-        <li class="<%= 'active' if current_page?(tickets_path) %>"><%= link_to 'tous les tickets', tickets_path %></li>
-        <li class="<%= 'active' if current_page?(activities_path) %>"><%= link_to 'timeline', activities_path %></li>
+        <% if current_user and current_user.admin? %>
+          <li class="<%= 'active' if current_page?(tickets_path) %>"><%= link_to "tous les tickets", tickets_path %></li>
+          <li class="<%= 'active' if current_page?(activities_path) %>"><%= link_to 'timeline', activities_path %></li>
+        <% end %>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <% if not user_signed_in? %>

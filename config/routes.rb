@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
-  get 'activities/index'
+  get 'pages/index'
+
+  get 'activities/index' # , protect_from_forgery :except => :index
 
   root 'tickets#index'
 
