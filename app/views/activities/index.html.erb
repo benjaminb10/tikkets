@@ -6,7 +6,9 @@
   <% @activities.each do |activity| %>
     <h5>  
       <% if activity.owner %>
-        <%= link_to activity.owner.email, activity.owner %>
+        <%= link_to activity.owner.username, activity.owner %>
+      <% else %>
+        un utilisateur qui a depuis été supprimé
       <% end %>
       <%= render_activity activity %>
     </h5>

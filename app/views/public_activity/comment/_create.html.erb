@@ -1,4 +1,8 @@
-a répondu au ticket <%= link_to activity.trackable.ticket.long_title, activity.trackable.ticket %>
+<% if activity.trackable and activity.trackable.ticket %>
+  a répondu au ticket <%= link_to activity.trackable.ticket.long_title, activity.trackable.ticket %>
+<% else %>
+  a répondu à un ticket qui a depuis été supprimé.
+<% end %>
 <div class="h1 text-muted">
   <%= fa_icon "comment" %>
 </div>

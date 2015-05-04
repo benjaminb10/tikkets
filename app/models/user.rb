@@ -14,4 +14,8 @@ class User < ActiveRecord::Base
 
   def track
   end
+
+  def username
+    email.partition('@').first
+  end
 end

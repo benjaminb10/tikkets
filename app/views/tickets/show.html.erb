@@ -26,7 +26,7 @@
     <% @ticket.tags.each do |tag| %> <%= link_to tag, '#', class: "label label-default label-#{tag}" %><% end %><br/>
   <% end %>
   <small><em>il y a <%= time_ago_in_words(@ticket.created_at.localtime) %></em></small><br/>
-  <small><em><%= @ticket.user.email %></em></small>
+  <small><em><%= @ticket.user.username %></em></small>
 </div>
 
 <br/>
@@ -41,7 +41,7 @@
         <br/><br/>
         <div class="text-right infos">
           <small><em>il y a <%= time_ago_in_words(comment.created_at.localtime) %></em></small><br/>
-          <small><em><%= comment.user.email %></em></small>
+          <small><em><%= comment.user.username %></em></small>
         </div>
       </div>
       <hr/>

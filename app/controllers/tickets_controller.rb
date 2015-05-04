@@ -43,7 +43,7 @@ class TicketsController < ApplicationController
 
     respond_to do |format|
       if @ticket.save
-        format.html { redirect_to tickets_url, notice: 'Le ticket a bien été créé.' }
+        format.html { redirect_to @ticket, notice: 'Le ticket a bien été créé.' }
         format.json { render :show, status: :created, location: @ticket }
       else
         format.html { render :new }
