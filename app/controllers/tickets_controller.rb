@@ -40,6 +40,7 @@ class TicketsController < ApplicationController
   def create
     @ticket = Ticket.new(ticket_params)
     @ticket.user = current_user
+    @ticket.user_agent = request.user_agent
 
     respond_to do |format|
       if @ticket.save

@@ -5,6 +5,7 @@ class CommentsController < ApplicationController
     @ticket = Ticket.find(params[:ticket_id])
     @comment = @ticket.comments.create(comment_params)
     @comment.user = current_user
+    @comment.user_agent = request.user_agent
     @comment.save
     redirect_to ticket_path(@ticket)
   end
