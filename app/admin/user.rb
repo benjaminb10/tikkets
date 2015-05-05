@@ -18,8 +18,6 @@ permit_params :admin
       f.input :email
       f.input :admin
     end
-
     f.actions
   end
-
 end
